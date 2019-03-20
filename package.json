@@ -1,0 +1,23 @@
+{
+  "name": "chat-service",
+  "version": "1.0.0",
+  "description": "this is chat service",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm run test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AllenChinese/Chat-Service.git"
+  },
+  "author": "zhoujiawei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AllenChinese/Chat-Service/issues"
+  },
+  "homepage": "https://github.com/AllenChinese/Chat-Service#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
