@@ -15,6 +15,11 @@ io.on('connection', socket => {
     // 服务器向全体群聊成员广播新用户
     io.emit('join', name)
   })
+
+  // 监听 message 发送聊天信息事件
+  socket.on('message', msg => {
+    io.emit('message', msg)
+  })
 })
 
 http.listen(3000, () => {

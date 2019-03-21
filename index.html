@@ -56,7 +56,7 @@
 <body>
   <ul id="messages"></ul>
   <form action="">
-    <input id="m" autocomplete="off" /><button>发送</button>
+    <input id="msgInput" autocomplete="off" /><button>发送</button>
   </form>
   <script src="/socket.io/socket.io.js"></script>
   <script>
@@ -65,6 +65,7 @@
 
     // 发送给后端
     socket.emit('join', name)
+    document.title = name + "的聊天室"
 
     // 收到服务器发来的 join 事件
     socket.on('join', user => {
@@ -74,6 +75,25 @@
     function addLine(msg) {
       $('#messages').append($('<li>').text(msg));
     }
+
+    /*==================================
+     * send msg fn
+     ==================================*/
+    // 客户端接收到服务端发来的 message 事件
+    socket.on('message', msg => {
+      addLine(msg)
+    })
+
+    $('form').submit(function () {
+      var msg = $('#msgInput').val()
+
+      // 将聊天输入发送给服务端
+      socket.emit('message', msg)
+
+      $('#msgInput').val('')
+
+      return false
+    })
   </script>
 </body>
 
