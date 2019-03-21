@@ -1,8 +1,20 @@
 const app = require('express')()
 const http = require('http').Server(app)
+const io = require('socket.io')(http)
+var userSocket = []
 
 app.get('/', (req, res) => {
-  res.send('<h1>Hello World</h1>')
+  res.sendFile(__dirname + '/index.html')
+})
+
+io.on('connection', socket => {
+  console.log('a user connected')
+  // 监听 join 事件
+  socket.on('join', name => {
+    userSocket[name] = socket
+    // 服务器向全体群聊成员广播新用户
+    io.emit('join', name)
+  })
 })
 
 http.listen(3000, () => {
