@@ -1,11 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+
+<head>
+  <title><%= title %></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font: 13px Helvetica, Arial;
+    }
+
+    form {
+      background: #000;
+      padding: 3px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    form input {
+      border: 0;
+      padding: 10px;
+      width: 90%;
+      margin-right: .5%;
+    }
+
+    form button {
+      width: 9%;
+      background: rgb(130, 224, 255);
+      border: none;
+      padding: 10px;
+    }
+
+    #messages {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    #messages li {
+      padding: 5px 10px;
+    }
+
+    #messages li:nth-child(odd) {
+      background: #eee;
+    }
+  </style>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+  <p>Welcome to <%= title %></p>
+  <ul id="messages"></ul>
+  <form action="">
+    <input id="msgInput" autocomplete="off" /><button>发送</button>
+  </form>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var name = prompt("请输入你的昵称：");
+    var socket = io()
+
+    // 发送给后端
+    socket.emit('join', name)
+    document.title = name + "的聊天室"
+
+    // 收到服务器发来的 join 事件
+    socket.on('join', user => {
+      addLine(user + '加入了群聊')
+    })
+
+    function addLine(msg) {
+      $('#messages').append($('<li>').text(msg));
+    }
+
+    /*==================================
+     * send msg fn
+     ==================================*/
+    // 客户端接收到服务端发来的 message 事件
+    socket.on('message', msg => {
+      addLine(msg)
+    })
+
+    $('form').submit(function () {
+      var msg = $('#msgInput').val()
+
+      // 将聊天输入发送给服务端
+      socket.emit('message', msg)
+
+      $('#msgInput').val('')
+
+      return false
+    })
+  </script>
+</body>
+
 </html>

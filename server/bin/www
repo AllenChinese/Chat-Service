@@ -21,6 +21,29 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+
+/**
+ * Create Socket.IO
+ */
+var io = require('socket.io')(server);
+var userSocket = [];
+
+// socket.io
+io.on('connection', socket => {
+  console.log('a user connected');
+  // 监听 join 事件
+  socket.on('join', name => {
+    userSocket[name] = socket;
+    // 服务器向全体群聊成员广播新用户
+    io.emit('join', name);
+  });
+
+  // 监听 message 发送聊天信息事件
+  socket.on('message', msg => {
+    io.emit('message', msg);
+  });
+});
+
 /**
  * Listen on provided port, on all network interfaces.
  */
