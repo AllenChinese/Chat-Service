@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
-  entry: './app/src/index.js',
+  entry: ['babel-polyfill', './app/src/index.js'],
   output: {
     filename: 'bundle.[hash].js',
     path: path.join(__dirname, '/dist')
@@ -13,6 +13,11 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        use: ['babel-loader']
       }
     ]
   },
