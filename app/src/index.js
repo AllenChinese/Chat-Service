@@ -1,11 +1,8 @@
 // js 入口文件
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from 'react-router-dom'
-import App from './components/App'
+import RouteConfig from './route'
 
 ReactDOM.render((
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <RouteConfig />
 ), document.getElementById("root"));

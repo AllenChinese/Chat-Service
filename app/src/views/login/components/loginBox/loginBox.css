@@ -1,0 +1,26 @@
+.login-content {
+  position: relative;
+  margin-top: 0;
+  padding: 0 40px 40px;
+  border-radius: 4px;
+  width: 340px;
+  height: auto;
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, .1);
+  background: #FFF;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.login-header {
+  margin: 0;
+  padding: 30px 28px 43px 28px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.login-form-button {
+  width: 100%;
+}
