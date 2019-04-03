@@ -1,5 +1,24 @@
 import React, { Component } from 'react'
+import { ChatRoomSideBar, MessageItems, MessageWindow } from './components'
 import './chatRoom.css'
-const ChatRoom = () => `this is a ChatRoom`
 
-export default ChatRoom
+export default class ChatRoom extends Component {
+  render() {
+    return (
+      <div className="chatroom-wrapper">
+        <div className="chatroom-box">
+          <div className="chatroom-header"></div>
+          <div className="chatroom-content">
+            {/* ChatRoomSideBar */}
+            <ChatRoomSideBar />
+            {/* MessageItems */}
+            <MessageItems />
+            {/* MessageWindow */}
+            <MessageWindow />
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+
