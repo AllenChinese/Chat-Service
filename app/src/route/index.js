@@ -1,17 +1,19 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom'
 
 import Login from '../views/login'
+import ChatRoom from '../views/chatRoom'
 
 export default class RouteConfig extends React.Component {
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <Switch>
           <Route path="/" exact component={Login} />
+          <Route path="/chatRoom" component={ChatRoom} />
           <Redirect to="/" />
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     )
   }
 }

@@ -13,6 +13,10 @@
   -o-border-radius: 4px;
 }
 
+.login-form input {
+  font-size: 14px;
+}
+
 .login-header {
   margin: 0;
   padding: 30px 28px 43px 28px;
