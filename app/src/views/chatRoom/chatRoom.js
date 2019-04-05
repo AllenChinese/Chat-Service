@@ -1,13 +1,21 @@
-import React, { Component } from 'react'
-import { ChatRoomSideBar, MessageItems, MessageWindow } from './components'
-import './chatRoom.css'
+import React, { Component } from "react";
+import {
+  ChatHeader,
+  ChatRoomSideBar,
+  MessageItems,
+  MessageWindow
+} from "./components";
+import "./chatRoom.css";
 
 export default class ChatRoom extends Component {
   render() {
     return (
       <div className="chatroom-wrapper">
         <div className="chatroom-box">
-          <div className="chatroom-header"></div>
+          <div className="chatroom-header">
+            {/* ChatHeader */}
+            <ChatHeader />
+          </div>
           <div className="chatroom-content">
             {/* ChatRoomSideBar */}
             <ChatRoomSideBar />
@@ -18,7 +26,6 @@ export default class ChatRoom extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
-

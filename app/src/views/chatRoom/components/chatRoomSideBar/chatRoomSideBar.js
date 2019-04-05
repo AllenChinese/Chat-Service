@@ -1,14 +1,10 @@
-import React, { Component } from 'react'
-import './chatRoomSideBar.css'
+import React, { Component } from "react";
+import "./chatRoomSideBar.css";
 
 class ChatRoomSideBar extends Component {
   render() {
-    return (
-      <div>
-        this is ChatRoomSideBar
-      </div>
-    );
+    return <div className="chatRoom-sideBar">this is ChatRoomSideBar</div>;
   }
 }
 
-export default ChatRoomSideBar
+export default ChatRoomSideBar;
