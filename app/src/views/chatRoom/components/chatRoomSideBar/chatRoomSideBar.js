@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { Tooltip } from 'antd';
 import './chatRoomSideBar.less';
 
 function UserOnlineBox() {
@@ -17,12 +19,31 @@ class SettingArea extends Component {
     super(props);
   }
 
+  settingHandleClick() {
+    // switch theme color
+  }
+
+  closeHandleClick() {
+    // close the chatRoom
+    // back to login
+    this.props.history.push('/');
+  }
+
   render() {
+    const text = 'React、antd、Express、Socket.io';
     return (
       <div className="setting-area">
-        <i className="iconfont iconshezhi icon__setting" />
-        <i className="iconfont iconclose icon__close" />
-        <i className="iconfont iconguanyu icon__about" />
+        <i
+          onClick={() => this.settingHandleClick()}
+          className="iconfont iconshezhi icon__setting"
+        />
+        <i
+          onClick={() => this.closeHandleClick()}
+          className="iconfont iconclose icon__close"
+        />
+        <Tooltip placement="topLeft" trigger="click" title={text}>
+          <i className="iconfont iconguanyu icon__about" />
+        </Tooltip>
       </div>
     );
   }
@@ -33,10 +54,10 @@ class ChatRoomSideBar extends Component {
     return (
       <div className="chatRoom-sideBar">
         <UserOnlineBox />
-        <SettingArea />
+        <SettingArea history={this.props.history} />
       </div>
     );
   }
 }
 
-export default ChatRoomSideBar;
+export default withRouter(ChatRoomSideBar);

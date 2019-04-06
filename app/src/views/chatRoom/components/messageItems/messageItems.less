@@ -1,5 +1,78 @@
-.message-items {
-  width: 200px;
+ul,
+li {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+p {
+  margin: 0;
+}
+
+.messageItems-wrapper {
+  width: 220px;
   height: 100%;
+  overflow: auto;
   background-color: blueviolet;
+}
+
+.message-items {
+  width: 100%;
+  height: auto;
+}
+
+.message-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #f2f2f2;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  color: #929292;
+  background-color: #fff;
+  box-sizing: border-box;
+
+  .item-preview {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .item-message {
+    flex: 1;
+    height: 100%;
+    font-size: 12px;
+
+    .topBar {
+      display: flex;
+      justify-content: space-between;
+      height: 20px;
+      line-height: 20px;
+    }
+
+    .chatting {
+      color: #727272;
+
+      p {
+        width: 100%;
+        height: 20px;
+        line-height: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+      }
+    }
+  }
 }
