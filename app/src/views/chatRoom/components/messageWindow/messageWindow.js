@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "./messageWindow.css";
+import React, { Component } from 'react';
+import './messageWindow.less';
 
 class MessageWindow extends Component {
   render() {

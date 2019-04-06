@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "./chatHeader.css";
+import React, { Component } from 'react';
+import './chatHeader.less';
 
 class ChatHeader extends Component {
   render() {
@@ -7,15 +7,15 @@ class ChatHeader extends Component {
       <div className="header-content">
         <span
           className="single-circle"
-          style={{ backgroundColor: "#00a6ac" }}
+          style={{ backgroundColor: '#00a6ac' }}
         />
         <span
           className="single-circle"
-          style={{ backgroundColor: "#145b7d" }}
+          style={{ backgroundColor: '#145b7d' }}
         />
         <span
           className="single-circle"
-          style={{ backgroundColor: "#009ad6" }}
+          style={{ backgroundColor: '#009ad6' }}
         />
       </div>
     );

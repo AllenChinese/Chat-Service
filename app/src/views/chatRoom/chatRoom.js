@@ -5,7 +5,7 @@ import {
   MessageItems,
   MessageWindow
 } from "./components";
-import "./chatRoom.css";
+import "./chatRoom.less";
 
 export default class ChatRoom extends Component {
   render() {

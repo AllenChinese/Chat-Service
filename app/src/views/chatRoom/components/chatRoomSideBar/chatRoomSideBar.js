@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "./chatRoomSideBar.css";
+import React, { Component } from 'react';
+import './chatRoomSideBar.less';
 
 class ChatRoomSideBar extends Component {
   render() {
