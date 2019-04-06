@@ -2,6 +2,10 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+function resolve(dir) {
+  return path.join(__dirname, '..', dir);
+}
+
 module.exports = {
   entry: ['babel-polyfill', './app/src/index.js'],
   output: {
@@ -29,6 +33,11 @@ module.exports = {
         use: ['babel-loader']
       }
     ]
+  },
+  resolve: {
+    alias: {
+      // '@': resolve('src')
+    }
   },
   plugins: [
     new HtmlWebpackPlugin({
