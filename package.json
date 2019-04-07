@@ -19,6 +19,7 @@
   "homepage": "https://github.com/AllenChinese/Chat-Service#readme",
   "dependencies": {
     "antd": "^3.16.1",
+    "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "debug": ">=2.6.9",
