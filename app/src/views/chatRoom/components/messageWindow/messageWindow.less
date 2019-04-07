@@ -8,10 +8,67 @@
 }
 
 .message-window .single-window {
+  display: flex;
+  flex-wrap: wrap;
   margin-right: 15px;
   width: 70%;
   height: 100%;
   background-color: #fff;
+
+  &-top {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px 15px;
+    border-bottom: 1px solid #f2f3f5;
+    width: 100%;
+    height: 38px;
+    font-size: 14px;
+    box-sizing: border-box;
+
+    .iconshouji {
+      margin-right: 10px;
+      font-size: 18px;
+      color: #007aff;
+    }
+  }
+
+  &-content {
+    border-bottom: 1px solid #f2f3f5;
+    width: 100%;
+    height: calc(100% - 38px - 128px);
+    box-sizing: border-box;
+  }
+
+  &-footer {
+    width: 100%;
+    height: 128px;
+
+    .function-bar {
+      padding: 5px 15px;
+    }
+
+    .input-area {
+      .textarea {
+        resize: none;
+        outline: none;
+
+        &:focus {
+          border-color: rgb(217, 217, 217);
+          box-shadow: none;
+        }
+      }
+    }
+
+    .iconfont {
+      margin-right: 10px;
+      cursor: pointer;
+
+      &:hover {
+        color: #007aff;
+      }
+    }
+  }
 }
 
 .message-window .single-sidebar {
