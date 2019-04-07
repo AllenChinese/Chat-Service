@@ -26,7 +26,7 @@ class SettingArea extends Component {
   closeHandleClick() {
     // close the chatRoom
     // back to login
-    this.props.history.push('/');
+    this.props.history.push('/login');
   }
 
   render() {

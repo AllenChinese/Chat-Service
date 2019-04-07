@@ -20,7 +20,6 @@ class MessageItems extends Component {
   }
 
   render() {
-    console.log(this.state.chatList);
     return (
       <div className="messageItems-wrapper">
         <ul className="message-items">
