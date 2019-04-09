@@ -7,10 +7,15 @@ function SingleSidebar(props) {
   return (
     <div className="single-sidebar">
       <div className="static-msg">
-        <h2>项目信息</h2>
-        <p>项目名：{sidebarMsg.projectMsg.name}</p>
+        <h2>
+          <span>项目信息</span>
+        </h2>
         <p>
-          Github：
+          <span>项目名：</span>
+          {sidebarMsg.projectMsg.name}
+        </p>
+        <p>
+          <span>Github：</span>
           <a href={sidebarMsg.projectMsg.githubAddress}>
             {sidebarMsg.projectMsg.name}
           </a>
@@ -18,10 +23,16 @@ function SingleSidebar(props) {
       </div>
       <div className="static-msg">
         <h2>个人信息</h2>
-        <p>微信：{sidebarMsg.personalMsg.wechat}</p>
-        <p>公司：{sidebarMsg.personalMsg.company}</p>
         <p>
-          内推：
+          <span>微信：</span>
+          {sidebarMsg.personalMsg.wechat}
+        </p>
+        <p>
+          <span>公司：</span>
+          {sidebarMsg.personalMsg.company}
+        </p>
+        <p>
+          <span>内推：</span>
           <a href={'mailto:' + sidebarMsg.personalMsg.job}>
             {sidebarMsg.personalMsg.job}
           </a>
@@ -37,9 +48,49 @@ function SingleSidebar(props) {
   );
 }
 
+function SingleChatItem(props) {
+  const chatItem = props.chatItem;
+  return (
+    <div className={chatItem.sign ? 'single-item owner' : 'single-item others'}>
+      <div className="single-item-content">
+        <div className="item-top">
+          <p className="item-username">{chatItem.name}</p>
+          <p className="item-time">{chatItem.time}</p>
+        </div>
+        <div className="item-content">
+          <p className="txt">{chatItem.msg}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 class SingleWindow extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      singleWindowItem: {
+        title: '杭州滨江 Allenzhoujiawei',
+        chatLists: [
+          {
+            id: 1,
+            name: 'allen周嘉炜',
+            time: '2019.03.12 14:20:34',
+            sign: 1,
+            msg:
+              'Google 的免费翻译服务可提供简体中文和另外100多种语言之间的互译功能'
+          },
+          {
+            id: 2,
+            name: '金泰妍',
+            sign: 0,
+            time: '2019.03.16 14:20:34',
+            msg:
+              'Specificity is a weight that is applied to a given CSS declaration'
+          }
+        ]
+      }
+    };
   }
 
   render() {
@@ -48,9 +99,13 @@ class SingleWindow extends Component {
       <div className="single-window">
         <div className="single-window-top">
           <i className="iconfont iconshouji" />
-          <p>杭州滨江 Allen</p>
+          <p>{this.state.singleWindowItem.title}</p>
         </div>
-        <div className="single-window-content" />
+        <div className="single-window-content">
+          {this.state.singleWindowItem.chatLists.map(item => (
+            <SingleChatItem chatItem={item} key={'hash_' + item.id} />
+          ))}
+        </div>
         <div className="single-window-footer">
           <div className="function-bar">
             <i className="iconfont iconemoji" />
