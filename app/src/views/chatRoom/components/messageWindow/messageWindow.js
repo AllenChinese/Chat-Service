@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Tag, Input } from 'antd';
+import { Tag, Input, Button } from 'antd';
+import currentTime from '../../../../utils/currentTime';
 import './messageWindow.less';
 
 function SingleSidebar(props) {
@@ -69,6 +70,7 @@ class SingleWindow extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      msg: '',
       singleWindowItem: {
         title: '杭州滨江 Allenzhoujiawei',
         chatLists: [
@@ -91,6 +93,28 @@ class SingleWindow extends Component {
         ]
       }
     };
+    this.onHandleSubmit = this.onHandleSubmit.bind(this);
+  }
+
+  textareaHandleChange(event) {
+    this.setState({
+      msg: event.target.value
+    });
+  }
+
+  onHandleSubmit() {
+    this.state.singleWindowItem.chatLists.push({
+      id: this.state.singleWindowItem.chatLists.length + 1,
+      name: 'allen周嘉炜',
+      sign: 1,
+      time: currentTime(),
+      msg: this.state.msg
+    });
+
+    this.setState({
+      singleWindowItem: this.state.singleWindowItem,
+      msg: ''
+    });
   }
 
   render() {
@@ -113,7 +137,17 @@ class SingleWindow extends Component {
             <i className="iconfont iconlishixiaoxi" />
           </div>
           <div className="input-area">
-            <TextArea className="textarea" rows={4} />
+            <TextArea
+              className="textarea"
+              value={this.state.msg}
+              onChange={e => this.textareaHandleChange(e)}
+              rows={4}
+            />
+            <div className="submit-area">
+              <Button type="primary" size="small" onClick={this.onHandleSubmit}>
+                发送
+              </Button>
+            </div>
           </div>
         </div>
       </div>
