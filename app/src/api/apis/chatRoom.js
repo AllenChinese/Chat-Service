@@ -7,3 +7,11 @@ export const getChatList = payload => {
     payload
   });
 };
+
+export const fetchRoomMessage = payload => {
+  return $axios({
+    method: 'get',
+    url: '/messages/getRoomMessage',
+    payload
+  });
+};

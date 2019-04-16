@@ -17,7 +17,6 @@ class MessageItems extends Component {
         chatList: res.data.chatList
       });
     }
-    console.log(this.state.chatList);
   }
 
   render() {
