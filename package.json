@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "this is chat service",
   "main": "server.js",
+  "proxy": "http://localhost:7000",
   "scripts": {
-    "start": "webpack-dev-server --open --config webpack.dev.config.js",
+    "start": "concurrently \"webpack-dev-server --open --config webpack.dev.config.js\" \"cd server && npm run start\"",
     "build": "webpack --config webpack.prod.config.js"
   },
   "repository": {
@@ -22,6 +23,7 @@
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
+    "concurrently": "^4.1.0",
     "debug": ">=2.6.9",
     "express": "^4.15.2",
     "fresh": ">=0.5.2",
