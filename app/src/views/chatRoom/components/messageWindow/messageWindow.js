@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { Tag, Input, Button } from 'antd';
-import currentTime from '../../../../utils/currentTime';
-import { fetchRoomMessage } from '../../../../api/apis/chatRoom';
-import './messageWindow.less';
+import React, { Component } from 'react'
+import { Tag, Input, Button } from 'antd'
+import currentTime from '../../../../utils/currentTime'
+import { fetchRoomMessage } from '../../../../api/apis/chatRoom'
+import './messageWindow.less'
 
 function SingleSidebar(props) {
-  const sidebarMsg = props.sidebarMsg;
+  const sidebarMsg = props.sidebarMsg
   return (
     <div className="single-sidebar">
       <div className="static-msg">
@@ -43,15 +43,15 @@ function SingleSidebar(props) {
       <div className="static-msg">
         <h2>标签</h2>
         {sidebarMsg.tags.map(item => {
-          <Tag color={item.color}>{item.tag}</Tag>;
+          ;<Tag color={item.color}>{item.tag}</Tag>
         })}
       </div>
     </div>
-  );
+  )
 }
 
 function SingleChatItem(props) {
-  const chatItem = props.chatItem;
+  const chatItem = props.chatItem
   return (
     <div className={chatItem.sign ? 'single-item owner' : 'single-item others'}>
       <div className="single-item-content">
@@ -64,36 +64,36 @@ function SingleChatItem(props) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 class SingleWindow extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       msg: '',
       singleWindowItem: {
         title: 'Node Party',
         chatLists: []
       }
-    };
-    this.onHandleSubmit = this.onHandleSubmit.bind(this);
+    }
+    this.onHandleSubmit = this.onHandleSubmit.bind(this)
   }
 
   async componentDidMount() {
     /** 获取单个窗口聊天数据 */
-    let res = await fetchRoomMessage();
+    let res = await fetchRoomMessage()
     if (res.success) {
       this.setState({
         singleWindowItem: res.data
-      });
+      })
     }
   }
 
   textareaHandleChange(event) {
     this.setState({
       msg: event.target.value
-    });
+    })
   }
 
   onHandleSubmit() {
@@ -103,16 +103,16 @@ class SingleWindow extends Component {
       sign: 1,
       time: currentTime(),
       msg: this.state.msg
-    });
+    })
 
     this.setState({
       singleWindowItem: this.state.singleWindowItem,
       msg: ''
-    });
+    })
   }
 
   render() {
-    const { TextArea } = Input;
+    const { TextArea } = Input
     return (
       <div className="single-window">
         <div className="single-window-top">
@@ -145,13 +145,13 @@ class SingleWindow extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
 class MessageWindow extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       sidebarMsg: {
         projectMsg: {
@@ -182,7 +182,7 @@ class MessageWindow extends Component {
           }
         ]
       }
-    };
+    }
   }
   render() {
     return (
@@ -190,8 +190,8 @@ class MessageWindow extends Component {
         <SingleWindow />
         <SingleSidebar sidebarMsg={this.state.sidebarMsg} />
       </div>
-    );
+    )
   }
 }
 
-export default MessageWindow;
+export default MessageWindow
