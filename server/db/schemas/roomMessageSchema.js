@@ -1,14 +1,14 @@
-/** userSchema 用户 */
+/** roomMessageSchema */
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 /** 创建 Schema */
-const UserSchema = new Schema({
+const RoomMessageSchema = new Schema({
   id: Number,
   name: String,
-  desc: String,
+  msg: String,
   time: String,
-  preview: String
+  sign: Number
 })
 
-module.exports = UserSchema
+module.exports = RoomMessageSchema

@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
-import { getChatList } from '../../../../api/apis/chatRoom';
-import './messageItems.less';
+import React, { Component } from 'react'
+import { getChatList } from '../../../../api/apis/chatRoom'
+import './messageItems.less'
 
 class MessageItems extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       chatList: []
-    };
+    }
   }
 
   async componentDidMount() {
-    let res = await getChatList();
+    let res = await getChatList()
     if (res.success) {
       this.setState({
         chatList: res.data.chatList
-      });
+      })
     }
   }
 
@@ -39,12 +39,12 @@ class MessageItems extends Component {
                   </div>
                 </div>
               </li>
-            );
+            )
           })}
         </ul>
       </div>
-    );
+    )
   }
 }
 
-export default MessageItems;
+export default MessageItems
