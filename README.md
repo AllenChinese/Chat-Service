@@ -1,8 +1,31 @@
-## Socket 聊天室 
+## Socket 聊天室
 
 ### Information
 
 > Chat-Service application build by Node.js（Express）、Socket.io、React。
+
+### 开发
+
+> 确保本地已经安装 mongodb & mongoose
+
+#### 运行 MongoDB
+
+启动 mongodb，默认数据库目录即为 /data/db，本项目中使用的数据库名为 dataDb：
+
+```js
+sudo mongod
+
+# 如果没有创建全局路径 PATH，需要进入以下目录
+cd /usr/local/mongodb/bin
+sudo ./mongod
+```
+
+再打开一个终端进入执行以下命令：
+
+```js
+$ cd /usr/local/mongodb/bin
+$ ./mongo
+```
 
 ### Support
 
