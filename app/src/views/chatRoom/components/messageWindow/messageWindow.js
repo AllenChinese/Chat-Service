@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { Tag, Input, Button } from 'antd'
 import currentTime from '../../../../utils/currentTime'
-import { fetchRoomMessage } from '../../../../api/apis/chatRoom'
+import {
+  fetchRoomMessage,
+  insertRoomMessage
+} from '../../../../api/apis/chatRoom'
 import './messageWindow.less'
 
 function SingleSidebar(props) {
@@ -96,19 +99,16 @@ class SingleWindow extends Component {
     })
   }
 
-  onHandleSubmit() {
-    this.state.singleWindowItem.chatLists.push({
-      id: this.state.singleWindowItem.chatLists.length + 1,
+  async onHandleSubmit() {
+    let res = await insertRoomMessage({
       name: 'allen周嘉炜',
       sign: 1,
       time: currentTime(),
       msg: this.state.msg
     })
-
-    this.setState({
-      singleWindowItem: this.state.singleWindowItem,
-      msg: ''
-    })
+    if (res.success) {
+      this.componentDidMount()
+    }
   }
 
   render() {
